@@ -1,0 +1,266 @@
+# Override configuration from https://github.com/jenkins-x/jenkins-x-platform/blob/master/jenkins-x-platform/values.yaml
+gcpreviews:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
+
+gcactivities:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
+
+gcpods:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
+
+controllerworkflow:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
+
+controllerbuild:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-go
+
+controllercommitstatus:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
+
+controllerrole:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
+
+controllerteam:
+  image:
+    repository: gcr.azk8s.cn/jenkinsxio/builder-jx
+
+nexus:
+  persistence:
+    size: 20Gi
+
+chartmuseum:
+  persistence:
+    Size: 20Gi
+
+jenkins:
+  Master:
+    Image: "gcr.azk8s.cn/jenkinsxio/jenkinsx"
+
+  Agent:
+    PodTemplates:
+      aws-cdk:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          aws-cdk:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-nodejs:2.0.1063-390
+
+      Maven:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Maven:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven:2.0.1063-390
+
+      Maven-Java11:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Maven:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-java11:2.0.1063-390
+
+      Maven-GraalVM:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Maven:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-graalvm:0.1.560
+
+      Gradle:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Gradle:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-gradle:2.0.1063-390
+
+      Scala:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Scala:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-scala:2.0.1063-390
+
+      Go:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Go:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-go:2.0.1063-390
+
+      Terraform:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Terraform:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-terraform:2.0.1063-390
+
+      Rust:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Rust:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-rust:2.0.1063-390
+
+      Newman:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Newman:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-newman:2.0.1063-390
+
+      Nodejs8x:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Nodejs:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs8x:2.0.1063-390
+
+      Nodejs10x:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Nodejs:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs10x:2.0.1063-390
+
+      Nodejs12x:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Nodejs:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs12x:2.0.1063-390
+
+      php5x:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Nodejs:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-php5x:2.0.1063-390
+
+      php7x:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Nodejs:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-php7x:2.0.1063-390
+
+      Nodejs:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Nodejs:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-nodejs:2.0.1063-390
+
+      Maven-Nodejs:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          MavenNodejs:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-maven-nodejs:2.0.1063-390
+
+      JX-base:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          JX-base:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-jx:2.0.1063-390
+
+      Promote:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Promote:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-jx:2.0.1063-390
+
+      Packer:
+        Containers:
+          Packer:
+            Image: dockerhub.azk8s.cn/hashicorp/packer:1.4.1
+
+      Python2:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Python:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-python2:2.0.1063-390
+
+      Python:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Python:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-python:2.0.1063-390
+
+      Python37:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Python:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-python37:2.0.1063-390
+
+      Ruby:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+
+          Ruby:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-ruby:2.0.1063-390
+
+      Swift:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Swift:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-swift:2.0.1063-390
+
+      Dlang:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Dlang:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-dlang:2.0.1063-390
+
+      Machine-Learning:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Machine-Learning:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-machine-learning:0.1.987
+
+      Machine-Learning-Gpu:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          Machine-Learning:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-machine-learning-gpu:0.1.987
+
+      DotNet:
+        Containers:
+          Jnlp:
+            Image: dockerhub.azk8s.cn/jenkinsci/jnlp-slave:3.26-1-alpine
+          DotNet:
+            Image: gcr.azk8s.cn/jenkinsxio/builder-dotnet:2.0.1063-390
+
+  Persistence:
+    Size: 30Gi
+
+grafana:
+  server:
+    setDatasource:
+      image: dockerhub.azk8s.cn/appropriate/curl:latest
+      restartPolicy: OnFailure
