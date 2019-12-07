@@ -2,7 +2,7 @@ cluster:
   clusterName: ""
   environmentGitOwner: ""
   project: ""
-  provider: gke
+  provider: alibaba
   zone: ""
 gitops: true
 environments:
